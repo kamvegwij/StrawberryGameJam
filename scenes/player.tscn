@@ -1,21 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7g5tbp4nfhre"]
+[gd_scene load_steps=5 format=3 uid="uid://b7g5tbp4nfhre"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_28i72"]
-[ext_resource type="Texture2D" uid="uid://cs0f7h655kwwp" path="res://icon.svg" id="2_hwdsx"]
+[ext_resource type="Texture2D" uid="uid://punmhnima54s" path="res://assets/img/lumberjack.png" id="2_0x0p7"]
+[ext_resource type="PackedScene" uid="uid://cfdrpkn8jdaqj" path="res://scenes/gui.tscn" id="3_n3q07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcpuy"]
-size = Vector2(34, 29)
+size = Vector2(49, 93)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_28i72")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(1.5, -0.5)
 shape = SubResource("RectangleShape2D_fcpuy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.289063, 0.234375)
-texture = ExtResource("2_hwdsx")
+position = Vector2(1.19209e-07, -9.53674e-07)
+scale = Vector2(0.0771889, 0.0605366)
+texture = ExtResource("2_0x0p7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 zoom = Vector2(1.922, 1.922)
+
+[node name="gui" parent="." instance=ExtResource("3_n3q07")]

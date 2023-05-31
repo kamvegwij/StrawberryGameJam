@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dks4uycdyj22x"]
+
+[ext_resource type="Texture2D" uid="uid://bf087vhkjvicf" path="res://assets/img/meaticon.png" id="1_eymtu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymqiw"]
+size = Vector2(26, 29)
+
+[node name="powerup" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_ymqiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 4.76837e-07)
+scale = Vector2(0.0294444, 0.0470067)
+texture = ExtResource("1_eymtu")

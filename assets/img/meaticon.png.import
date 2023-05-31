@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://codd8bfc2v2y3"
-path="res://.godot/imported/char1.png-90e875908cbaa5b5ecbce8704b60ac82.ctex"
+uid="uid://bf087vhkjvicf"
+path="res://.godot/imported/meaticon.png-7ffe2541e8dde0e9b80a718c36c195a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/char1.png"
-dest_files=["res://.godot/imported/char1.png-90e875908cbaa5b5ecbce8704b60ac82.ctex"]
+source_file="res://assets/img/meaticon.png"
+dest_files=["res://.godot/imported/meaticon.png-7ffe2541e8dde0e9b80a718c36c195a5.ctex"]
 
 [params]
 

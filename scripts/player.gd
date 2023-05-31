@@ -16,7 +16,10 @@ func move_player(delta):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+		
+	if Input.is_action_just_pressed("power_up") and GameManager.boost_available:
+			velocity.y = JUMP_VELOCITY - 200.0
+			
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -25,4 +28,3 @@ func move_player(delta):
 
 	move_and_slide()
 	
-
