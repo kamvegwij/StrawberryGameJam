@@ -46,12 +46,12 @@ func _on_area_2d_area_entered(area):
 	if area.get_parent().is_in_group("treerare"):
 		can_chop = true
 		tree_collided = "rare"
-		print("rare tree found")
+		area.get_parent().get_node("health").visible = true
 
 	if area.get_parent().is_in_group("treecommon"):
 		can_chop = true
 		tree_collided = "common"
-		print("common tree found")
+		area.get_parent().get_node("health").visible = true
 		
 	if area.get_parent().is_in_group("meat"):
 		GameManager.boost_available = true
@@ -64,3 +64,5 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(area):
 	can_chop = false
 	tree_collided = ""
+	if area.get_parent().is_in_group("treecommon") or area.get_parent().is_in_group("treerare"):
+		area.get_parent().get_node("health").visible = false

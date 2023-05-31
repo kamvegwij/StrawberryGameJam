@@ -9,7 +9,7 @@ size = Vector2(69, 212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56u68"]
 size = Vector2(107, 134)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6khm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm6jj"]
 bg_color = Color(0.654902, 0.0666667, 0.235294, 1)
 border_width_left = 3
 border_width_top = 3
@@ -20,7 +20,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idtkr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7bgu"]
 bg_color = Color(0.580392, 0.639216, 0.184314, 1)
 border_width_left = 3
 border_width_top = 3
@@ -50,19 +50,20 @@ position = Vector2(-0.5, 16)
 shape = SubResource("RectangleShape2D_56u68")
 
 [node name="health" type="ProgressBar" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -76.0
-offset_top = -98.0
-offset_right = 64.0
-offset_bottom = -71.0
+offset_left = -45.0
+offset_top = -172.0
+offset_right = 42.0
+offset_bottom = -155.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_n6khm")
-theme_override_styles/fill = SubResource("StyleBoxFlat_idtkr")
+theme_override_styles/background = SubResource("StyleBoxFlat_lm6jj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w7bgu")
 max_value = 350.0
 step = 1.0
 show_percentage = false
