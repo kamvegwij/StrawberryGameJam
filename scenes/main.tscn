@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgxj2f7pmo8v8"]
+[gd_scene load_steps=11 format=3 uid="uid://dvsr3dfjd63by"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_3arrd"]
 [ext_resource type="Texture2D" uid="uid://dot27oppwk17w" path="res://assets/Tiles/Assets/Assets.png" id="1_3efbv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d0bk4jvh0v1jd" path="res://assets/Tiles/Assets/Background_2.png" id="2_iqdlf"]
 [ext_resource type="PackedScene" uid="uid://b7g5tbp4nfhre" path="res://scenes/player.tscn" id="4_td4bl"]
 [ext_resource type="PackedScene" uid="uid://dks4uycdyj22x" path="res://scenes/powerup.tscn" id="5_mm1p7"]
+[ext_resource type="PackedScene" uid="uid://q64sfw05x1n2" path="res://scenes/TreeCommon.tscn" id="7_we3bk"]
+[ext_resource type="PackedScene" uid="uid://dntabrhsk0y42" path="res://scenes/rare_tree.tscn" id="8_1vdpg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ss28o"]
 texture = ExtResource("1_3efbv")
@@ -378,4 +380,10 @@ position = Vector2(49, 494)
 position = Vector2(581, 314)
 
 [node name="powerup" parent="." instance=ExtResource("5_mm1p7")]
-position = Vector2(947, 331)
+position = Vector2(279, 458)
+
+[node name="TreeCommon" parent="." instance=ExtResource("7_we3bk")]
+position = Vector2(574, 359)
+
+[node name="RareTree" parent="." instance=ExtResource("8_1vdpg")]
+position = Vector2(367, 403)

@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://q64sfw05x1n2"]
+
+[ext_resource type="Script" path="res://scripts/TreeCommon.gd" id="1_47ucr"]
+[ext_resource type="Texture2D" uid="uid://dw1ds7ye02ds" path="res://assets/img/falltree.png" id="1_ickhc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llye8"]
+size = Vector2(73, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e040g"]
+size = Vector2(107, 112)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idv2w"]
+bg_color = Color(0.654902, 0.0666667, 0.235294, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm0rj"]
+bg_color = Color(0.580392, 0.639216, 0.184314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="TreeCommon" type="StaticBody2D" groups=["treecommon"]]
+script = ExtResource("1_47ucr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_llye8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.5, -44.375)
+scale = Vector2(0.240398, 0.293403)
+texture = ExtResource("1_ickhc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_e040g")
+
+[node name="health" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -98.0
+offset_right = 74.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_idv2w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qm0rj")
+max_value = 250.0
+step = 1.0
+show_percentage = false

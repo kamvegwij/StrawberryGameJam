@@ -6,9 +6,12 @@ const JUMP_VELOCITY = -420.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var can_chop: bool = false
+var tree_collided: String = ""
 
 func _physics_process(delta):
 	move_player(delta)
+	chop_tree()
 	
 func move_player(delta):
 	if not is_on_floor():
@@ -28,3 +31,29 @@ func move_player(delta):
 
 	move_and_slide()
 	
+func chop_tree():
+	if Input.is_action_just_pressed("chop"):
+		if can_chop and tree_collided == "rare":
+			GameManager.rare_tree_health -= 20
+			
+		if can_chop and tree_collided == "common":
+			GameManager.common_tree_health -= 40
+			
+func _on_area_2d_area_entered(area):
+	if area.get_parent().is_in_group("treerare"):
+		can_chop = true
+		tree_collided = "rare"
+		print("rare tree found")
+
+	if area.get_parent().is_in_group("treecommon"):
+		can_chop = true
+		tree_collided = "common"
+		print("common tree found")
+		
+	if area.get_parent().is_in_group("meat"):
+		GameManager.boost_available = true
+		area.get_parent().queue_free()
+		
+func _on_area_2d_area_exited(area):
+	can_chop = false
+	tree_collided = ""

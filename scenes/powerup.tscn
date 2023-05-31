@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dks4uycdyj22x"]
+[gd_scene load_steps=4 format=3 uid="uid://dks4uycdyj22x"]
 
 [ext_resource type="Texture2D" uid="uid://bf087vhkjvicf" path="res://assets/img/meaticon.png" id="1_eymtu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymqiw"]
 size = Vector2(26, 29)
 
-[node name="powerup" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4msy"]
+size = Vector2(31, 33)
+
+[node name="powerup" type="Area2D" groups=["meat"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.5)
@@ -15,3 +18,9 @@ shape = SubResource("RectangleShape2D_ymqiw")
 position = Vector2(-1, 4.76837e-07)
 scale = Vector2(0.0294444, 0.0470067)
 texture = ExtResource("1_eymtu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_u4msy")

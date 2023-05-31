@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7g5tbp4nfhre"]
+[gd_scene load_steps=6 format=3 uid="uid://b7g5tbp4nfhre"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_28i72"]
 [ext_resource type="Texture2D" uid="uid://punmhnima54s" path="res://assets/img/lumberjack.png" id="2_0x0p7"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcpuy"]
 size = Vector2(49, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kk53"]
+size = Vector2(70, 107)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_28i72")
@@ -24,3 +27,12 @@ enabled = false
 zoom = Vector2(1.922, 1.922)
 
 [node name="gui" parent="." instance=ExtResource("3_n3q07")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, -2.5)
+shape = SubResource("RectangleShape2D_6kk53")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
