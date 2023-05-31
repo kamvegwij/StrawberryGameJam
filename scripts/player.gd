@@ -9,6 +9,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_chop: bool = false
 var tree_collided: String = ""
 
+func _ready():
+	GameManager.player = self
+	
 func _physics_process(delta):
 	move_player(delta)
 	chop_tree()
@@ -52,7 +55,11 @@ func _on_area_2d_area_entered(area):
 		
 	if area.get_parent().is_in_group("meat"):
 		GameManager.boost_available = true
+		await(get_tree().create_timer(0.2))
 		area.get_parent().queue_free()
+		
+	if area.is_in_group("ladder"):
+		position = area.get_node("end").get_global_position()
 		
 func _on_area_2d_area_exited(area):
 	can_chop = false

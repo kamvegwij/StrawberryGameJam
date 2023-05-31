@@ -1,5 +1,7 @@
 extends Node
 
+var player
+
 var player_health = 100.0
 var player_progress: int = 0
 
