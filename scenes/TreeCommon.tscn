@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://q64sfw05x1n2"]
+[gd_scene load_steps=8 format=3 uid="uid://q64sfw05x1n2"]
 
 [ext_resource type="Script" path="res://scripts/TreeCommon.gd" id="1_47ucr"]
 [ext_resource type="Texture2D" uid="uid://dw1ds7ye02ds" path="res://assets/img/falltree.png" id="1_ickhc"]
@@ -30,6 +30,17 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqb7g"]
+bg_color = Color(0, 0.298039, 0.027451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="TreeCommon" type="StaticBody2D" groups=["treecommon"]]
 script = ExtResource("1_47ucr")
@@ -67,3 +78,22 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_qm0rj")
 max_value = 250.0
 step = 1.0
 show_percentage = false
+
+[node name="prompt" type="Label" parent="."]
+visible = false
+offset_left = -67.0
+offset_top = -214.0
+offset_right = 90.0
+offset_bottom = -188.0
+theme_override_font_sizes/font_size = 16
+text = "shift + E to cut down"
+
+[node name="bg" type="Panel" parent="prompt"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rqb7g")

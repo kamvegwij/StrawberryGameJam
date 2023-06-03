@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkyu13x0o1pnl"]
+
+[ext_resource type="Texture2D" uid="uid://dt6vwo6ph2q8a" path="res://assets/img/spikes.png" id="1_r8550"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vg3yb"]
+size = Vector2(215, 56)
+
+[node name="sharprocks" type="Area2D" groups=["spike"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_vg3yb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.576471, 0.133333, 0.262745, 1)
+scale = Vector2(0.46, 0.875)
+texture = ExtResource("1_r8550")

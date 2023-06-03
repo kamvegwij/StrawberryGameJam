@@ -6,4 +6,5 @@ func _physics_process(_delta):
 	health = GameManager.rare_tree_health
 	$health.value = GameManager.rare_tree_health
 	if health <= 0:
+		GameManager.material_left += 150
 		queue_free()
