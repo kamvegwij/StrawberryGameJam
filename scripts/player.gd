@@ -55,7 +55,7 @@ func move_player(delta):
 
 func build_bridge():
 	if Input.is_action_just_pressed("build"):
-		if GameManager.material_left >= 50:
+		if GameManager.material_left >= 75:
 			var new_bridge = bridge.instantiate()
 			$gui/prompts/bg/info.text = "building..."
 			$gui/prompts.visible = true

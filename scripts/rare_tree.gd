@@ -12,7 +12,7 @@ func _physics_process(_delta):
 			health -= 40
 			
 	if health <= 0 and is_instance_valid(self):
-		GameManager.material_left += 150
+		GameManager.material_left += 75
 		queue_free()
 
 
