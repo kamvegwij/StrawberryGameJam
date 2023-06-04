@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -420.0
+const bridge = preload("res://scenes/bridge.tscn")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -18,7 +19,7 @@ func _physics_process(delta):
 		#get_tree().change_scene_to_file()
 		
 	move_player(delta)
-	chop_tree()
+	build_bridge()
 	
 func move_player(delta):
 	if not is_on_floor():
@@ -36,37 +37,25 @@ func move_player(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		
+	if direction < 0: $Sprite2D.flip_h = true
+	else: $Sprite2D.flip_h = false
 	move_and_slide()
-	
-func chop_tree():
-	if Input.is_action_just_pressed("chop"):
-		if can_chop and tree_collided == "rare":
-			GameManager.rare_tree_health -= 20
-			
-		if can_chop and tree_collided == "common":
-			GameManager.common_tree_health -= 40
-			
-func add_to_inventory(name, img, total, type):
-	var item = Inventory.new()
-	item.name = name
-	item.img = img
-	item.total = total
-	item.item_type = type
-	return item
-	
-func _on_area_2d_area_entered(area):
-	if area.get_parent().is_in_group("treerare"):
-		can_chop = true
-		tree_collided = "rare"
-		area.get_parent().get_node("health").visible = true
-		area.get_parent().get_node("prompt").visible = true
 
-	if area.get_parent().is_in_group("treecommon"):
-		can_chop = true
-		tree_collided = "common"
-		area.get_parent().get_node("health").visible = true
-		area.get_parent().get_node("prompt").visible = true
+
+func build_bridge():
+	if Input.is_action_just_pressed("build"):
+		if GameManager.material_left >= 50:
+			print("building bridge")
+			
+			var new_bridge = bridge.instantiate()
+			new_bridge.global_position = get_global_mouse_position()
+			get_parent().add_child(new_bridge)
+			GameManager.material_left -= 50
+		else:
+			print("not enough wood")
+		
+func _on_area_2d_area_entered(area):
 		
 	if area.get_parent().is_in_group("meat"):
 		await(get_tree().create_timer(0.2))
@@ -86,7 +75,3 @@ func _on_area_2d_area_entered(area):
 				
 func _on_area_2d_area_exited(area):
 	can_chop = false
-	tree_collided = ""
-	if area.get_parent().is_in_group("treecommon") or area.get_parent().is_in_group("treerare"):
-		area.get_parent().get_node("health").visible = false
-		area.get_parent().get_node("prompt").visible = false
