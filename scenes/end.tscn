@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0cyeeskbuavv"]
+
+[ext_resource type="Texture2D" uid="uid://d0bk4jvh0v1jd" path="res://assets/Tiles/Assets/Background_2.png" id="1_aqita"]
+[ext_resource type="Script" path="res://scripts/end.gd" id="1_byid1"]
+[ext_resource type="Texture2D" uid="uid://bukcau24wrfjw" path="res://assets/Tiles/Assets/Background_1.png" id="2_2nxvf"]
+[ext_resource type="FontFile" uid="uid://due0bivgo57y4" path="res://assets/font/Blobtastics.ttf" id="3_c6bqx"]
+
+[node name="end" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_byid1")
+
+[node name="bg2" type="TextureRect" parent="."]
+modulate = Color(0.890196, 0.945098, 0.435294, 1)
+offset_left = -320.0
+offset_top = -166.0
+offset_right = 1452.0
+offset_bottom = 727.0
+texture = ExtResource("1_aqita")
+
+[node name="bg" type="TextureRect" parent="."]
+modulate = Color(0.898039, 0.843137, 0.654902, 1)
+offset_left = -318.0
+offset_top = -166.0
+offset_right = 1445.0
+offset_bottom = 723.0
+texture = ExtResource("2_2nxvf")
+
+[node name="header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -539.0
+offset_top = 136.0
+offset_right = 549.0
+offset_bottom = 252.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_c6bqx")
+theme_override_font_sizes/font_size = 50
+text = "Levels complete!
+
+going back to menu..."
+horizontal_alignment = 1
+vertical_alignment = 1

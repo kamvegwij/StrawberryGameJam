@@ -7,7 +7,7 @@
 size = Vector2(69, 212)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56u68"]
-size = Vector2(107, 134)
+size = Vector2(107, 146)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm6jj"]
 bg_color = Color(0.654902, 0.0666667, 0.235294, 1)
@@ -57,7 +57,7 @@ texture = ExtResource("1_vrexh")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 16)
+position = Vector2(-0.5, 10)
 shape = SubResource("RectangleShape2D_56u68")
 
 [node name="health" type="ProgressBar" parent="."]

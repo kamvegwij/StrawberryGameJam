@@ -16,6 +16,7 @@ func _ready():
 func _physics_process(delta):
 	if GameManager.player_health <= 0:
 		SPEED = 0.0
+		MusicControl.fail_play()
 		$gui/prompts/bg/info.text = "returning to menu"
 		$gui/prompts.visible = true
 		await(get_tree().create_timer(3).timeout)
@@ -25,7 +26,7 @@ func _physics_process(delta):
 		GameManager.material_left = 0
 		GameManager.meat_left = 0
 		GameManager.active_scene = 1
-		
+	
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		
 	move_player(delta)
@@ -36,9 +37,11 @@ func move_player(delta):
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		MusicControl.play_grunt()
 		velocity.y = JUMP_VELOCITY
 		
 	if Input.is_action_just_pressed("power_up") and GameManager.meat_left > 0:
+		MusicControl.play_grunt()
 		GameManager.meat_left -= 1
 		velocity.y = JUMP_VELOCITY - 200.0
 			
@@ -68,6 +71,7 @@ func build_bridge():
 			get_parent().add_child(new_bridge)
 			GameManager.material_left -= 75	
 			$gui/prompts.visible = false
+			MusicControl.play_tree_down()
 			
 		else:
 			$gui/prompts/bg/info.text = "not enough wood!"
@@ -78,6 +82,7 @@ func build_bridge():
 func _on_area_2d_area_entered(area):
 		
 	if area.get_parent().is_in_group("meat"):
+		MusicControl.play_hover()
 		GameManager.meat_left += 1
 		area.get_parent().queue_free()
 		
@@ -85,6 +90,7 @@ func _on_area_2d_area_entered(area):
 		position = area.get_node("end").get_global_position()
 		
 	if area.is_in_group("spike"):
+		MusicControl.spikes_play()
 		GameManager.player_health -= 50
 		#RESPAWN AT CHECKPOINT
 		SPEED = 0.0
@@ -96,5 +102,6 @@ func _on_area_2d_area_entered(area):
 		global_position = get_parent().get_node("checkpoint").global_position
 		SPEED = 150.0
 		JUMP_VELOCITY = -420.0
+		
 func _on_area_2d_area_exited(area):
 	can_chop = false

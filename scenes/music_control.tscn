@@ -1,0 +1,55 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpw3fngrun4cx"]
+
+[ext_resource type="Script" path="res://scripts/music_control.gd" id="1_ge8vb"]
+[ext_resource type="AudioStream" uid="uid://c3kf0ahm6lis5" path="res://assets/audio/themesong.wav" id="2_ytyq4"]
+[ext_resource type="AudioStream" uid="uid://lx4q8dnr2hye" path="res://assets/audio/gameplaysound.wav" id="3_gylq6"]
+[ext_resource type="AudioStream" uid="uid://bl3f2ly3xl3xh" path="res://assets/audio/scroll.wav" id="4_qdmf0"]
+[ext_resource type="AudioStream" uid="uid://ixykdy43wctf" path="res://assets/audio/play_button.wav" id="5_i7oko"]
+[ext_resource type="AudioStream" uid="uid://dnqjiff8i3j6e" path="res://assets/audio/fail_sound.wav" id="6_pk8b2"]
+[ext_resource type="AudioStream" uid="uid://b8828buss7wrg" path="res://assets/audio/pop.wav" id="7_lm1xn"]
+[ext_resource type="AudioStream" uid="uid://cwxitoi8liu6k" path="res://assets/audio/click_cartoony.wav" id="8_ifu7i"]
+[ext_resource type="AudioStream" uid="uid://k046fjqppteh" path="res://assets/audio/wrong.mp3" id="9_ay673"]
+[ext_resource type="AudioStream" uid="uid://de0ndqtspe2ww" path="res://assets/audio/678839__cartchaos__jump.wav" id="10_nyt54"]
+[ext_resource type="AudioStream" uid="uid://cj6mwgqrxw006" path="res://assets/audio/33509__ambientsoundscapes__saltwells-nature-reserve-birdsong-01.wav" id="11_c1svd"]
+
+[node name="MusicControl" type="Node"]
+script = ExtResource("1_ge8vb")
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ytyq4")
+
+[node name="gameplaytheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gylq6")
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qdmf0")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_i7oko")
+volume_db = -16.22
+
+[node name="fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pk8b2")
+volume_db = -24.807
+
+[node name="chop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lm1xn")
+volume_db = -24.807
+
+[node name="treedown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ifu7i")
+volume_db = -24.807
+
+[node name="spikes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ay673")
+volume_db = -24.807
+
+[node name="grunt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_nyt54")
+volume_db = -24.808
+pitch_scale = 1.15
+
+[node name="ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_c1svd")
+volume_db = -24.808
+pitch_scale = 1.15

@@ -9,10 +9,12 @@ func _physics_process(_delta):
 	
 	if colliding:
 		if Input.is_action_just_pressed("chop"):
+			MusicControl.play_chopping()
 			health -= 20
 			
 	if health <= 0 and is_instance_valid(self):
 		GameManager.material_left += 50
+		MusicControl.play_tree_down()
 		queue_free()
 
 

@@ -55,6 +55,9 @@ script = ExtResource("1_i8tys")
 [node name="helpprompt" type="Label" parent="."]
 offset_right = 130.0
 offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "ESC to open help"
 
 [node name="top" type="Control" parent="."]
@@ -122,7 +125,7 @@ grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_d4grd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1dfsq")
 step = 1.0
-value = 67.0
+value = 100.0
 show_percentage = false
 
 [node name="inventoryheader" type="Label" parent="top/bg"]
@@ -299,10 +302,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 18
-text = "Seasons In Isolation is a platformer game in which the player has to make their way to the cabin hidden away before winter comes.
-In this journey you cut down common and rare, which yield different amounts of wood, and you also collect food.
+text = "You can use the wood to build bridge to help cross dangerous areas and you can use the food to give a jumping boost. Your bridge is placed wherever your mouse is during building.
 
-You can use the wood to build bridge to help cross dangerous areas and you can use the food to give a jumping boost
+NOTE: Be smart with what supplies to use in different situations!!
 Can you make it to the cabin without using too much of these supplies?
 
 Controls:
@@ -313,6 +315,64 @@ Shift + E - Chop down tree. Break bridge
 Shift + W - Power Jump
 Shift + B - Build bridge
 ESC - Open Help Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="info2" type="Label" parent="help"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -348.0
+offset_top = 15.0
+offset_right = 347.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.337255, 0.129412, 0.0352941, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 25
+text = "Stuck? Press Ctrl + X to be taken back home :("
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="gohome" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="gohome"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.882353, 0.709804, 0.533333, 1)
+
+[node name="info2" type="Label" parent="gohome"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.5
+offset_top = -19.0
+offset_right = 347.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.337255, 0.129412, 0.0352941, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 25
+text = "Going back home..."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

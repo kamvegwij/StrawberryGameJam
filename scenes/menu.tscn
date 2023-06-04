@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://caq7mo21wa4ec"]
+[gd_scene load_steps=6 format=3 uid="uid://caq7mo21wa4ec"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_07cpc"]
 [ext_resource type="FontFile" uid="uid://due0bivgo57y4" path="res://assets/font/Blobtastics.ttf" id="1_8dawp"]
+[ext_resource type="Texture2D" uid="uid://d0bk4jvh0v1jd" path="res://assets/Tiles/Assets/Background_2.png" id="2_65l3p"]
+[ext_resource type="Texture2D" uid="uid://bukcau24wrfjw" path="res://assets/Tiles/Assets/Background_1.png" id="3_vkmry"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ait5c"]
 bg_color = Color(0.882353, 0.709804, 0.533333, 1)
@@ -15,7 +17,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_07cpc")
 
+[node name="bg2" type="TextureRect" parent="."]
+modulate = Color(0.890196, 0.945098, 0.435294, 1)
+offset_left = -320.0
+offset_top = -166.0
+offset_right = 1452.0
+offset_bottom = 727.0
+texture = ExtResource("2_65l3p")
+
+[node name="bg" type="TextureRect" parent="."]
+modulate = Color(0.898039, 0.843137, 0.654902, 1)
+offset_left = -318.0
+offset_top = -166.0
+offset_right = 1445.0
+offset_bottom = 723.0
+texture = ExtResource("3_vkmry")
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,6 +92,21 @@ theme_override_fonts/font = ExtResource("1_8dawp")
 theme_override_font_sizes/font_size = 32
 text = "quit"
 
+[node name="info" type="Label" parent="."]
+layout_mode = 0
+offset_left = 795.0
+offset_top = 401.0
+offset_right = 1107.0
+offset_bottom = 583.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+text = "Information: 
+Seasons In Isolation is a strategy  platformer game in which the player has to make their way to the cabin hidden away before winter comes.
+In this journey you cut down common and rare trees, which yield different amounts of wood, and you also collect food."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="closescreen" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -101,5 +135,7 @@ theme_override_fonts/font = ExtResource("1_8dawp")
 theme_override_font_sizes/font_size = 55
 text = "thank you for playing :)"
 
+[connection signal="mouse_entered" from="start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
