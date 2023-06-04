@@ -421,4 +421,7 @@ position = Vector2(-13, -225)
 [node name="portal" parent="." instance=ExtResource("11_3ixj6")]
 position = Vector2(-16, 102)
 
+[node name="checkpoint" type="Node2D" parent="."]
+position = Vector2(46, 494)
+
 [editable path="Ladder"]

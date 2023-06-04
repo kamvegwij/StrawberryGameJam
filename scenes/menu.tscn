@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://caq7mo21wa4ec"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_07cpc"]
+[ext_resource type="FontFile" uid="uid://due0bivgo57y4" path="res://assets/font/Blobtastics.ttf" id="1_8dawp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ait5c"]
+bg_color = Color(0.882353, 0.709804, 0.533333, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_07cpc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.882353, 0.709804, 0.533333, 1)
+
+[node name="header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 104.0
+offset_right = 16.0
+offset_bottom = 127.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_8dawp")
+theme_override_font_sizes/font_size = 80
+text = "MENU"
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 289.0
+offset_right = 648.0
+offset_bottom = 368.0
+theme_override_fonts/font = ExtResource("1_8dawp")
+theme_override_font_sizes/font_size = 32
+text = "start"
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 395.0
+offset_right = 648.0
+offset_bottom = 474.0
+theme_override_fonts/font = ExtResource("1_8dawp")
+theme_override_font_sizes/font_size = 32
+text = "quit"
+
+[node name="closescreen" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ait5c")
+
+[node name="header" type="Label" parent="closescreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -456.0
+offset_top = -58.0
+offset_right = 456.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_8dawp")
+theme_override_font_sizes/font_size = 55
+text = "thank you for playing :)"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

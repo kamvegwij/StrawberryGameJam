@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 150.0
-const JUMP_VELOCITY = -420.0
+var SPEED = 150.0
+var JUMP_VELOCITY = -420.0
 const bridge = preload("res://scenes/bridge.tscn")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -15,8 +15,18 @@ func _ready():
 	
 func _physics_process(delta):
 	if GameManager.player_health <= 0:
-		pass
-		#get_tree().change_scene_to_file()
+		SPEED = 0.0
+		$gui/prompts/bg/info.text = "returning to menu"
+		$gui/prompts.visible = true
+		await(get_tree().create_timer(3).timeout)
+		$gui/prompts.visible = false
+		#reset global properties
+		GameManager.player_health = 100
+		GameManager.material_left = 0
+		GameManager.meat_left = 0
+		GameManager.active_scene = 1
+		
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		
 	move_player(delta)
 	build_bridge()
@@ -46,19 +56,28 @@ func move_player(delta):
 func build_bridge():
 	if Input.is_action_just_pressed("build"):
 		if GameManager.material_left >= 50:
-			print("building bridge")
-			
 			var new_bridge = bridge.instantiate()
+			$gui/prompts/bg/info.text = "building..."
+			$gui/prompts.visible = true
+			SPEED = 0.0
+			JUMP_VELOCITY = 0.0
+			await(get_tree().create_timer(5).timeout)
+			SPEED = 150.0
+			JUMP_VELOCITY = -420.0
 			new_bridge.global_position = get_global_mouse_position()
 			get_parent().add_child(new_bridge)
-			GameManager.material_left -= 50
+			GameManager.material_left -= 75	
+			$gui/prompts.visible = false
+			
 		else:
-			print("not enough wood")
+			$gui/prompts/bg/info.text = "not enough wood!"
+			$gui/prompts.visible = true
+			await(get_tree().create_timer(1).timeout)
+			$gui/prompts.visible = false
 		
 func _on_area_2d_area_entered(area):
 		
 	if area.get_parent().is_in_group("meat"):
-		await(get_tree().create_timer(0.2))
 		GameManager.meat_left += 1
 		area.get_parent().queue_free()
 		
@@ -66,12 +85,16 @@ func _on_area_2d_area_entered(area):
 		position = area.get_node("end").get_global_position()
 		
 	if area.is_in_group("spike"):
-		GameManager.player_health -= 25
-		
-#		if GameManager.material_left > 0:
-#			GameManager.material_left -= 5
-			
-		get_tree().reload_current_scene()
-				
+		GameManager.player_health -= 50
+		#RESPAWN AT CHECKPOINT
+		SPEED = 0.0
+		JUMP_VELOCITY = 0.0
+		$gui/prompts/bg/info.text = "respawning to checkpoint"
+		$gui/prompts.visible = true
+		await(get_tree().create_timer(3).timeout)
+		$gui/prompts.visible = false
+		global_position = get_parent().get_node("checkpoint").global_position
+		SPEED = 150.0
+		JUMP_VELOCITY = -420.0
 func _on_area_2d_area_exited(area):
 	can_chop = false

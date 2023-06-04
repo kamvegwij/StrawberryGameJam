@@ -85,7 +85,7 @@ offset_left = -67.0
 offset_top = -214.0
 offset_right = 90.0
 offset_bottom = -188.0
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 21
 text = "shift + E to cut down"
 
 [node name="bg" type="Panel" parent="prompt"]
